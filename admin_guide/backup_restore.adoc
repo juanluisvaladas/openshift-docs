@@ -239,7 +239,7 @@ Then, restart the *etcd* service:
 `--force-new-cluster` option:
 +
 ----
-# sed -i '/ExecStart/s/ --force-new-cluster//' /usr/lib/systemd/system/etcd.service
+# sed -i '/ExecStart/s/--force-new-cluster//g' /usr/lib/systemd/system/etcd.service
 # systemctl show etcd.service --property ExecStart --no-pager
 
 ExecStart=/bin/bash -c "GOMAXPROCS=$(nproc) /usr/bin/etcd"
@@ -312,7 +312,7 @@ Then, restart the *etcd* service:
 `--force-new-cluster` option:
 +
 ----
-# sed  -i '/ExecStart=/s/ --force-new-cluster//' /etc/systemd/system/etcd_container.service
+# sed  -i '/ExecStart=/s/ --force-new-cluster//g' /etc/systemd/system/etcd_container.service
 
 ExecStart=/usr/bin/docker run --name etcd --rm -v /var/lib/etcd:/var/lib/etcd:z -v \
 /etc/etcd:/etc/etcd:ro --env-file=/etc/etcd/etcd.conf --net=host \
